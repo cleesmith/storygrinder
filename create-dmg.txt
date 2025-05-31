@@ -1,0 +1,9 @@
+create-dmg \
+  --volname "StoryGrinder" \
+  --window-size 540 400 \
+  --icon-size 128 \
+  --icon "StoryGrinder.app" 150 200 \
+  --hide-extension "StoryGrinder.app" \
+  --app-drop-link 390 200 \
+  "out/StoryGrinder.dmg" \
+  "out/StoryGrinder-darwin-arm64/StoryGrinder.app"
