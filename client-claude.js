@@ -16,15 +16,18 @@ class AiApiService {
       request_timeout: 300,
       context_window: 200000,
       thinking_budget_tokens: 32000,
-      betas_max_tokens: 128000,
+      // betas_max_tokens: 128000,
       desired_output_tokens: 8000,
       model_name: 'claude-3-7-sonnet-20250219',
       // betas: 'output-128k-2025-02-19',
-      // max_thinking_budget: 32000,
-      max_thinking_budget: 20000,
+      max_thinking_budget: 32000,  // Allow full 32K when possible
       max_tokens: 32000,
       ...config
     };
+    
+    // Debug logging to verify model selection
+    console.log('Claude API Constructor called with config:', config);
+    console.log('Final model selection:', this.config.model_name);
 
     const apiKeyFromEnv = process.env.ANTHROPIC_API_KEY;
     if (!apiKeyFromEnv) {
@@ -187,13 +190,11 @@ class AiApiService {
 
     const modelOptions = {
       model: this.config.model_name,
-      // max_tokens: budgets.maxTokens,
-      max_tokens: this.config.max_tokens,
+      max_tokens: budgets.maxTokens,
       messages: [{ role: "user", content: fullPrompt }],
       thinking: {
         type: "enabled",
-        // budget_tokens: budgets.thinkingBudget
-        budget_tokens: this.config.max_thinking_budget
+        budget_tokens: budgets.thinkingBudget
       },
       // betas: this._getBetasArray()
     };
@@ -315,29 +316,25 @@ class AiApiService {
     const contextWindow = this.config.context_window;
     const desiredOutputTokens = this.config.desired_output_tokens;
     const configuredThinkingBudget = this.config.thinking_budget_tokens;
-    const betasMaxTokens = this.config.betas_max_tokens;
+    // const betasMaxTokens = this.config.betas_max_tokens;
     const maxThinkingBudget = this.config.max_thinking_budget;
     
     // Calculate available tokens after prompt
     const availableTokens = contextWindow - promptTokens;
 
-    // For API call, max_tokens must respect the API limit
-    let maxTokens = Math.min(availableTokens, betasMaxTokens);
-    if (maxTokens > contextWindow) {
-      maxTokens = availableTokens;
-    }
+    // For API call, max_tokens must respect the API limit (32K without betas)
+    let maxTokens = Math.min(availableTokens, this.config.max_tokens);
     
-    // Thinking budget must be LESS than max_tokens to leave room for visible output
-    let thinkingBudget = maxTokens - desiredOutputTokens;
+    // Thinking budget: maximize based on available space
+    // API requires: max_tokens > thinking_budget
+    // So the absolute max thinking is maxTokens - 1
+    let thinkingBudget = Math.min(
+      maxTokens - 1,        // Must be less than max_tokens
+      maxThinkingBudget     // Respect configured limit (32K)
+    );
     
-    // Cap thinking budget if it's too large
-    const capThinkingBudget = thinkingBudget > maxThinkingBudget;
-    if (capThinkingBudget) {
-      thinkingBudget = maxThinkingBudget;
-    }
-    
-    // Check if prompt is too large for the configured thinking budget
-    const isPromptTooLarge = thinkingBudget < configuredThinkingBudget;
+    // Check if prompt is too large (using more than 90% of context window)
+    const isPromptTooLarge = promptTokens > (contextWindow * 0.9);
     
     return {
       contextWindow,
@@ -346,9 +343,8 @@ class AiApiService {
       maxTokens,
       thinkingBudget,
       desiredOutputTokens,
-      betasMaxTokens,
       configuredThinkingBudget,
-      capThinkingBudget,
+      maxThinkingBudget,
       isPromptTooLarge
     };
   }

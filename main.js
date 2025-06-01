@@ -415,6 +415,10 @@ function getCompleteApiSettings() {
     completeSettings.model_name = storedModel;
   }
   
+  console.log('getCompleteApiSettings returning:', completeSettings);
+  console.log('- selectedApiProvider:', appState.store ? appState.store.get('selectedApiProvider') : 'no store');
+  console.log('- selectedAiModel:', storedModel);
+  
   return completeSettings;
 }
 
