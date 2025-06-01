@@ -18,8 +18,8 @@ module.exports = {
     },
     {
       name: '@electron-forge/maker-dmg',
-      icon: './resources/StoryGrinder.icns',
-      background: './resources/dmg-background.png',
+      icon: './resources/storygrinder.icns',
+      // background: './resources/dmg-background.png',
       platforms: ['darwin'],
     },
     {
