@@ -64,6 +64,8 @@ StoryGrinder uses AI to analyze your manuscripts. You'll need at least one API k
 
 Your projects are stored in `~/writing_with_storygrinder/` on your computer. Each project gets its own folder with your manuscript and all generated analyses.
 
+---
+
 ## Available Tools
 
 ### Manuscript Analysis & Editing
@@ -72,35 +74,43 @@ Your projects are stored in `~/writing_with_storygrinder/` on your computer. Eac
 
 * **Narrative Integrity Checker** - Verifies your story stays consistent with your world-building and outline
 
-* **Character Analyzer** - Tracks character appearances and ensures consistency across your manuscript
-
-* **Plot Thread Tracker** - Maps how your various plot lines interconnect, converge, and resolve
-
-* **Tense Consistency Checker** - Catches unintended tense shifts that could confuse readers
-
-* **Conflict Analyzer** - Examines conflict patterns at scene, chapter, and story arc levels
-
-* **Foreshadowing Tracker** - Ensures your planted clues and hints have proper payoffs
-
-* **Dangling Modifier Checker** - Identifies confusing or unintentionally humorous modifier placement
-
-* **Crowding & Leaping Evaluator** - Analyzes pacing using Ursula K. Le Guin's concepts of dense detail vs. time jumps
-
-* **Adjective & Adverb Optimizer** - Suggests stronger verbs and nouns to replace weak modifiers
-
-* **Rhythm Analyzer** - Checks sentence variety and whether your prose rhythm matches the mood
-
-* **Punctuation Auditor** - Finds run-on sentences, missing commas, and other punctuation issues
-
 * **Developmental Editing** - Deep structural analysis of plot, character arcs, pacing, and themes
 
 * **Line Editing** - Detailed sentence-level improvements for specific chapters
 
 * **Copy Editing** - Grammar, syntax, punctuation, and consistency corrections
 
-* **Proofreader (Mechanical)** - Final check for spelling, grammar, and formatting errors
+* **Proofreader Spelling** - This is not an AI Tool, but blazing fast spell checker (watch out for false positives)
 
-* **Proofreader (Plot Consistency)** - Specifically checks for plot holes and world-building inconsistencies
+* **Proofreader Punctuation** - Finds run-on sentences, missing commas, and other punctuation issues
+
+* **Proofreader Plot Consistency** - Specifically checks for plot holes and world-building inconsistencies
+
+* **Manuscript to Outline/Characters/World** - Extracts structure from an existing manuscript to create planning documents
+
+* **Plot Thread Tracker** - Maps how your various plot lines interconnect, converge, and resolve
+
+* **Tense Consistency Checker** - Catches unintended tense shifts that could confuse readers
+
+* **Character Analyzer** - Tracks character appearances and ensures consistency across your manuscript
+
+* **Adjective & Adverb Optimizer** - Suggests stronger verbs and nouns to replace weak modifiers
+
+* **Dangling Modifier Checker** - Identifies confusing or unintentionally humorous modifier placement
+
+* **Rhythm Analyzer** - Checks sentence variety and whether your prose rhythm matches the mood
+
+* **Crowding & Leaping Evaluator** - Analyzes pacing using Ursula K. Le Guin's concepts of dense detail vs. time jumps
+
+* **Conflict Analyzer** - Examines conflict patterns at scene, chapter, and story arc levels
+
+* **Foreshadowing Tracker** - Ensures your planted clues and hints have proper payoffs
+
+* **KDP Publishing Prep** - Generates Amazon KDP metadata like descriptions, categories, and keywords
+
+* **Drunken** - Provides brutally honest (and slightly tipsy) manuscript critique
+
+---
 
 ### Content Generation & Organization
 
@@ -112,11 +122,7 @@ Your projects are stored in `~/writing_with_storygrinder/` on your computer. Eac
 
 * **Chapter Writer** - Drafts new chapters based on your outline and existing manuscript
 
-* **Manuscript to Outline/Characters/World** - Extracts structure from an existing manuscript to create planning documents
-
-* **KDP Publishing Prep** - Generates Amazon KDP metadata like descriptions, categories, and keywords
-
-* **Drunk Claude** - Provides brutally honest (and slightly tipsy) manuscript critique
+---
 
 ### Utility Tools
 
