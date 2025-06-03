@@ -1,8 +1,8 @@
 // main.js
 const { app, BrowserWindow, Menu, ipcMain, dialog, screen, shell } = require('electron');
 
-// Handle Squirrel events
-if (require('electron-squirrel-startup')) app.quit();
+// Handle Squirrel events - MUST be first!
+if (require('electron-squirrel-startup')) return;
 
 const path = require('path');
 const fs = require('fs');

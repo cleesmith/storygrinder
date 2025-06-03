@@ -1,36 +1,38 @@
+const { FusesPlugin } = require('@electron-forge/plugin-fuses');
+const { FuseV1Options, FuseVersion } = require('@electron/fuses');
+
 module.exports = {
   packagerConfig: {
-    asar: true,
+    asar: false,
     name: 'StoryGrinder',
-    executableName: 'storygrinder',
-    // Platform-specific icon handling
-    icon: process.platform === 'darwin' 
-      ? './resources/storygrinder.icns'  // Mac needs .icns
-      : './resources/icons/win/icon',    // Windows needs .ico
-    osxSign: false,
-    osxNotarize: false,
+    executableName: 'StoryGrinder',
+    icon: './resources/icon',
+    osxSign: false, // Explicitly disable signing
+    osxNotarize: false, // Explicitly disable notarization
   },
   rebuildConfig: {},
   makers: [
     {
+      name: '@electron-forge/maker-zip',
+      platforms: ['darwin', 'win32'],
+    },
+    {
       name: '@electron-forge/maker-dmg',
       icon: './resources/storygrinder.icns',
+      // background: './resources/dmg-background.png',
       platforms: ['darwin'],
     },
     {
       name: '@electron-forge/maker-squirrel',
       config: {
         name: 'storygrinder',
-        exe: 'storygrinder.exe',
+        exe: 'StoryGrinder.exe',
         authors: 'Chris Smith',
         description: "A desktop application for creative fiction writers with AI-powered manuscript analysis and editing tools",
         setupIcon: './resources/icons/win/icon.ico',
-        setupExe: 'StoryGrinder-${version}-Setup.exe',
+        setupExe: 'StoryGrinder-${version} Setup.exe',
         noMsi: true,
-        remoteReleases: false,
-        // iconUrl removed - only needed for remote releases/auto-updates
-        skipUpdateIcon: false,
-        loadingGif: false
+        remoteReleases: false
       },
       platforms: ['win32'],
     }

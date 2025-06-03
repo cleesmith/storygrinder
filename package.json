@@ -69,14 +69,10 @@
     "directories": {
       "buildResources": "resources"
     },
-    "asar": false,
+    "asar": true,
     "mac": {
       "target": "dmg",
       "artifactName": "${productName}-${version}-mac.${ext}"
-    },
-    "win": {
-      "target": "squirrel",
-      "artifactName": "${productName}-${version}-win.${ext}"
     }
   }
 }
