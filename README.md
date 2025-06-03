@@ -60,7 +60,8 @@ StoryGrinder uses AI to analyze your manuscripts. You'll need at least one API k
 > Note: 
 > StoryGrinder can NOT access any files outside of the directory
 > /writing_with_storygrinder, so initially you will have to copy or 
-> move into .docx or .txt files into a project folder ... for example:
+> move your .docx or .txt files into a project folder 
+> ... for example:
 > - create a new folder named: Moby Dick
 > - ~/writing_with_storygrinder/MobyDick
 > - copy a .docx of .txt of your book/novel/manuscript
