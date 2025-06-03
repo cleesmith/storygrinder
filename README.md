@@ -70,9 +70,9 @@ StoryGrinder uses AI to analyze your manuscripts. You'll need at least one API k
 > - ~/writing_with_storygrinder/MobyDick
 > - copy a .docx of .txt of your book/novel/manuscript
 
-4. Add your manuscript file (`.txt` or `.docx`)
-5. Select a tool from the dropdown menu
-6. Click "Setup & Run"
+5. Add your manuscript file (`.txt` or `.docx`)
+6. Select a Tool from the dropdown menu
+7. click "Setup & Run"
 
 Your projects are stored in `~/writing_with_storygrinder/` on your computer. 
 Each project gets its own folder with your manuscript(s) and all 
