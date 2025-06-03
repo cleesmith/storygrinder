@@ -70,7 +70,7 @@ StoryGrinder uses AI to analyze your manuscripts. You'll need at least one API k
 > - ~/writing_with_storygrinder/MobyDick
 > - copy a .docx of .txt of your book/novel/manuscript
 
-#### ** You have to use either Explorer (windows) or Finder (mac) to manage your writing projects in:  `~/writing_with_storygrinder/` ... such as copying manuscripts from Vellum, google Docs, Word, Atticus, Reedsy, or whatever. **
+#### You have to use either Explorer (windows) or Finder (mac) to manage your writing projects in:  `~/writing_with_storygrinder/` ... such as copying manuscripts from Vellum, google Docs, Word, Atticus, Reedsy, or whatever.
 
 5. Add your manuscript file (`.txt` or `.docx`)
 6. Select a Tool from the dropdown menu
