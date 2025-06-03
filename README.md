@@ -53,7 +53,17 @@ StoryGrinder uses AI to analyze your manuscripts. You'll need at least one API k
 - Go to API Keys in your account
 - Create new secret key
 
+---
+
 ### Your First Project
+
+> Note: 
+> StoryGrinder can NOT access any files outside of the directory
+> /writing_with_storygrinder, so initially you will have to copy or 
+> move into .docx or .txt files into a project folder ... for example:
+> - create a new folder named: Moby Dick
+> - ~/writing_with_storygrinder/MobyDick
+> - copy a .docx of .txt of your book/novel/manuscript
 
 1. Launch StoryGrinder
 2. Click "Create New Project" 
@@ -62,7 +72,9 @@ StoryGrinder uses AI to analyze your manuscripts. You'll need at least one API k
 5. Select a tool from the dropdown menu
 6. Click "Setup & Run"
 
-Your projects are stored in `~/writing_with_storygrinder/` on your computer. Each project gets its own folder with your manuscript and all generated analyses.
+Your projects are stored in `~/writing_with_storygrinder/` on your computer. 
+Each project gets its own folder with your manuscript(s) and all 
+timestamped generated analysis files.
 
 ---
 
