@@ -1,135 +1,126 @@
 # StoryGrinder
 
-Is a desktop application designed to assist creative fiction writers and editors by providing a suite of AI-powered tools to analyze and improve their manuscripts. It allows authors to manage writing projects and leverage the analytical capabilities of AI models.
+StoryGrinder is a desktop application that helps fiction writers analyze and improve their manuscripts using AI-powered tools. Your manuscripts stay on your computer, and you control when and how AI assistance is applied to your work.
 
-StoryGrinder speaks directly to the writer's experience of struggling to identify issues in their own work. 
-This app makes the painful process more manageable, and is an integral part of creating great writing. 
-It's honest about the process without being negative—editing is about improvement, after all.
+## Installation
 
-### Core Functionality and Architecture
+### For Mac Users
+1. Download the latest `.dmg` file from the [Releases page](https://github.com/cleesmith/storygrinder/releases)
+2. Double-click the downloaded file
+3. Drag StoryGrinder to your Applications folder
+4. The first time you open it, right-click the app and choose "Open" (this is required for apps not from the App Store)
 
-The application operates as a local desktop program, ensuring that project files such as manuscripts, outlines, and world-building documents are stored on the user's computer in a dedicated `~/writing` directory. This provides privacy and control over sensitive creative work.
+### For Windows Users  
+1. Download the latest `.exe` installer from the [Releases page](https://github.com/cleesmith/storygrinder/releases)
+2. Double-click the installer and follow the prompts
+3. StoryGrinder will be installed and a shortcut created on your desktop
 
-The toolkit integrates with AI services (Gemini and formerly Claude) to perform complex analyses. It manages API interactions, including handling API keys, managing token limits, and structuring prompts for various analytical tasks. The `main.js` file likely orchestrates the application's lifecycle and inter-process communication, while `renderer.js` handles the user interface logic.
+## Getting Started
 
-### Key Features and Tools
+### Setting Up Your API Key
 
-The `README.md` file outlines a comprehensive set of tools for creative fiction writing. These tools address various aspects of the writing and editing process:
+StoryGrinder uses AI to analyze your manuscripts. You'll need at least one API key from these providers:
 
-**Manuscript Analysis & Editing:**
+#### Option 1: Google Gemini (Inexpensive)
+1. Go to [Google AI Studio](https://aistudio.google.com/app/apikey)
+2. Click "Create API Key"
+3. Copy your API key
+4. In StoryGrinder, go to Settings and paste your Gemini API key
 
-* **Tokens & Words Counter:** Estimates Claude API usage and context window requirements by counting approximate tokens and words in text files.
+#### Option 2: Anthropic Claude
+1. Create an account at [Anthropic Console](https://console.anthropic.com/)
+2. Navigate to API Keys section
+3. Create a new API key
+4. Add it in StoryGrinder's Settings
 
-* **Narrative Integrity Checker:** Verifies manuscript consistency against world documents and optional outlines. It can check for world consistency, internal logic, character development, and unresolved plot elements.
+#### Option 3: OpenAI
+1. Sign up at [OpenAI Platform](https://platform.openai.com/)
+2. Go to API Keys in your account
+3. Create a new secret key
+4. Enter it in StoryGrinder's Settings
 
-* **Character Analyzer:** Identifies and compares character appearances across the manuscript, outline, and world files to maintain consistency.
+### Your First Project
 
-* **Plot Thread Tracker:** Analyzes manuscripts to identify and track distinct plot threads, showing how they interconnect, converge, and diverge.
+1. Launch StoryGrinder
+2. Click "Create New Project" 
+3. Give your project a name (e.g., "My Novel")
+4. Add your manuscript file (`.txt` or `.docx`)
+5. Select a tool from the dropdown menu
+6. Click "Setup & Run"
 
-* **Tense Consistency Checker:** Scans manuscripts for inconsistent verb tense usage that might confuse readers or disrupt narrative flow.
+Your projects are stored in `~/writing_with_storygrinder/` on your computer. Each project gets its own folder with your manuscript and all generated analyses.
 
-* **Conflict Analyzer:** Examines conflict patterns at scene, chapter, and arc levels, identifying their nature, escalation, and resolution.
+## Available Tools
 
-* **Foreshadowing Tracker:** Tracks foreshadowing elements, planted clues, and their payoffs to ensure narrative promises are fulfilled.
+### Manuscript Analysis & Editing
 
-* **Dangling Modifier Checker:** Identifies dangling and misplaced modifiers that could create confusion or unintended humor.
+* **Tokens & Words Counter** - Counts words and tokens in your manuscript
 
-* **Crowding & Leaping Evaluator:** Analyzes manuscripts for pacing issues based on Ursula K. Le Guin's concepts of "crowding" (intense detail) and "leaping" (jumping over time/events), identifying dense paragraphs and abrupt transitions.
+* **Narrative Integrity Checker** - Verifies your story stays consistent with your world-building and outline
 
-* **Adjective & Adverb Optimizer:** Reviews manuscripts for adjective and adverb usage, identifying unnecessary modifiers and suggesting stronger verbs/nouns.
+* **Character Analyzer** - Tracks character appearances and ensures consistency across your manuscript
 
-* **Rhythm Analyzer:** Measures sentence length variations, detects monotonous patterns, and highlights passages where the sound doesn't match the intended mood.
+* **Plot Thread Tracker** - Maps how your various plot lines interconnect, converge, and resolve
 
-* **Punctuation Auditor:** Identifies issues like run-on sentences, missing commas, and odd punctuation patterns that might hinder clarity and flow.
+* **Tense Consistency Checker** - Catches unintended tense shifts that could confuse readers
 
-* **Developmental Editing:** Analyzes the manuscript for structural issues, including plot holes, character arcs, pacing, narrative viewpoint, themes, and worldbuilding.
+* **Conflict Analyzer** - Examines conflict patterns at scene, chapter, and story arc levels
 
-* **Line Editing:** Performs detailed line editing on specific chapters.
+* **Foreshadowing Tracker** - Ensures your planted clues and hints have proper payoffs
 
-* **Copy Editing:** Corrects grammar, syntax, punctuation, and ensures consistency in spelling, formatting, and timelines.
+* **Dangling Modifier Checker** - Identifies confusing or unintentionally humorous modifier placement
 
-* **Proofreader (Mechanical):** Focuses on mechanical errors like spelling, grammar, punctuation, and basic formatting.
+* **Crowding & Leaping Evaluator** - Analyzes pacing using Ursula K. Le Guin's concepts of dense detail vs. time jumps
 
-* **Proofreader (Plot Consistency):** Specifically checks for inconsistencies in plot elements, world rules, and narrative causality.
+* **Adjective & Adverb Optimizer** - Suggests stronger verbs and nouns to replace weak modifiers
 
+* **Rhythm Analyzer** - Checks sentence variety and whether your prose rhythm matches the mood
 
-**Content Generation & Organization:**
+* **Punctuation Auditor** - Finds run-on sentences, missing commas, and other punctuation issues
 
-* **Brainstorm Tool:** Helps generate initial story ideas, prompts, and creative angles, appending them to an `ideas.txt` file.
+* **Developmental Editing** - Deep structural analysis of plot, character arcs, pacing, and themes
 
-* **Outline Writer:** Generates a plot outline from a brainstorming/premise file, with options to use an existing skeleton.
+* **Line Editing** - Detailed sentence-level improvements for specific chapters
 
-* **World Writer:** Extracts and develops characters and world elements from a novel outline, requiring a title, point-of-view, and existing `characters.txt` and `outline.txt` files.
+* **Copy Editing** - Grammar, syntax, punctuation, and consistency corrections
 
-* **Chapter Writer:** Uses the outline, a chapter list, world document, and any existing manuscript portions to draft new chapters.
+* **Proofreader (Mechanical)** - Final check for spelling, grammar, and formatting errors
 
-* **Manuscript Extractor / Manuscript to Outline, Characters, World:** Analyzes an existing manuscript to generate `outline.txt`, `characters.txt`, and `world.txt` files, helping users transition existing work into the toolkit's structure.
+* **Proofreader (Plot Consistency)** - Specifically checks for plot holes and world-building inconsistencies
 
+### Content Generation & Organization
 
-**Utility Tools:**
+* **Brainstorm Tool** - Generates story ideas and creative angles based on your prompts
 
-* **DOCX Text/Comments Extractor:** Extracts comments and their associated text from `.docx` files and saves them to a text file.
+* **Outline Writer** - Creates a detailed plot outline from your premise or brainstorming notes
 
-* **EPUB to TXT Converter:** Converts `.epub` files into plain text.
+* **World Writer** - Develops comprehensive world-building documents from your outline
 
-* **KDP Publishing Preparation:** Analyzes a manuscript to generate elements for Kindle Direct Publishing, such as title suggestions, descriptions, categories, and keywords.
+* **Chapter Writer** - Drafts new chapters based on your outline and existing manuscript
 
-* **Drunk Claude:** A tool that provides a "brutally honest" critique of a manuscript, adopting a persona.
+* **Manuscript to Outline/Characters/World** - Extracts structure from an existing manuscript to create planning documents
 
+* **KDP Publishing Prep** - Generates Amazon KDP metadata like descriptions, categories, and keywords
 
-### User Interface and Workflow
+* **Drunk Claude** - Provides brutally honest (and slightly tipsy) manuscript critique
 
-The application features a main interface (`index.html`, `renderer.js`) where users can:
+### Utility Tools
 
-1.  **Select or Create a Project:** Projects are managed in the `~/writing_with_storygrinder` directory. A project dialog (`project-dialog.html`, `project-dialog.js`) facilitates this.
+* **DOCX Comments Extractor** - Pulls out all comments from Word documents for easy review
 
-2.  **Select a Tool:** Tools are categorized into AI-based and non-AI tools, selectable via dropdown menus.
+* **EPUB to TXT Converter** - Converts ebook files to plain text for analysis
 
-3.  **Configure and Run Tools:** A dedicated "Tool Setup & Run" interface (`tool-setup-run.html`, `tool-setup-run.js`) allows users to configure parameters for the selected tool and then execute it. Output and progress are displayed in this interface.
+## Privacy & Security
 
-4.  **View Results:** Generated reports and files can be viewed and edited using a built-in text editor (`editor-dialog.html`, `editor-dialog.js`, `renderer/editor/index.html`, `renderer/editor/renderer.js`).
+- All manuscripts and project files stay on your local computer
+- API keys are stored securely in your system's credential storage
+- You control when AI services are accessed
+- No automatic uploads or background processing
 
-5.  **Toggle Theme:** The UI supports dark and light modes.
+## Support
 
+Having issues or suggestions? Please visit our [GitHub Issues page](https://github.com/yourusername/storygrinder/issues).
 
-### Technical Aspects
+## About
 
-* **Electron Application:** The toolkit is built as a desktop application using Electron (`main.js`, `preload.js`, `forge.config.js`).
-
-* **Node.js Backend:** JavaScript files suggest a Node.js environment for tool logic and file system operations.
-
-* **AI Integration:**
-    * Primarily uses the Gemini API, with services defined in `client.js` (GeminiAPIService).
-    * Previously supported Claude API, evident from `claude_client.js` and references in tool descriptions.
-    * The `GeminiAPIService` in `client.js` includes methods for streaming responses with a simulated "thinking" step, counting tokens, and calculating token budgets to work within API limits. It also handles safety settings for content generation.
-    * The `@google/genai` SDK is used for Gemini API interactions, as shown in `package.json` and `@google:genai.txt`.
-* **Modular Tool System:** Each tool is implemented as a class extending `ToolBase` (`base-tool.js`), promoting modularity. A `tool-system.js` and `registry.js` manage the loading and execution of these tools.
-
-* **File Handling:**
-    * `file-utils.js` likely provides common file reading/writing utilities.
-    * `file-cache.js` appears to track output files generated by tools.
-
-* **Dependencies:** Key dependencies listed in `package.json` include:
-    * `@google/genai`: For Gemini API.
-    * `@anthropic-ai/sdk`: For (likely previous) Claude API integration.
-    * `electron-store`: For persisting application settings.
-    * `mammoth`: For DOCX to HTML conversion (likely used by DOCX tools).
-    * `jszip`: For handling ZIP archives (used in EPUB and DOCX processing).
-    * `xmldom`, `xpath`: For XML parsing (used in EPUB and DOCX processing).
-    * `docx`: For creating DOCX files (likely for export functionality).
-
-* **State Management:** `state.js` manages global application state, including current project paths, API configurations, and selected tool information.
-* **Distribution:**
-    * `forge.config.js` configures Electron Forge for building the application for different platforms (macOS, Windows).
-    * `create-dmg.txt` provides instructions for creating a macOS DMG installer.
-
-
-### Configuration and Data Management
-
-* **Project-Based:** Work is organized into projects, each residing in its own subdirectory within `~/writing`.
-
-* **Local File Storage:** All primary data (manuscripts, outlines, world files, tool outputs) are stored as text files within the current project directory.
-
-* **Output Files:** Tools generate timestamped output files to avoid overwriting previous results.
-
-In summary, the StoryGrinder is a comprehensive desktop application that empowers authors with a range of AI-driven and utility tools to enhance their creative writing process, from initial brainstorming and drafting to in-depth analysis and editing, all while keeping their work stored locally.
+StoryGrinder speaks directly to the writer's experience of struggling to identify issues in their own work. This app makes the painful process more manageable, and is an integral part of creating great writing. It's honest about the process without being negative—editing is about improvement, after all.
