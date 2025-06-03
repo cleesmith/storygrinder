@@ -57,18 +57,19 @@ StoryGrinder uses AI to analyze your manuscripts. You'll need at least one API k
 
 ### Your First Project
 
+1. Launch StoryGrinder
+2. click "Select Project"
+2. glick "Create New Project" 
+3. Give your project a name (e.g., "Moby Dick")
+
 > Note: 
 > StoryGrinder can NOT access any files outside of the directory
 > /writing_with_storygrinder, so initially you will have to copy or 
-> move your .docx or .txt files into a project folder 
-> ... for example:
+> move your .docx or .txt files into a project folder, for example:
 > - create a new folder named: Moby Dick
 > - ~/writing_with_storygrinder/MobyDick
 > - copy a .docx of .txt of your book/novel/manuscript
 
-1. Launch StoryGrinder
-2. Click "Create New Project" 
-3. Give your project a name (e.g., "My Novel")
 4. Add your manuscript file (`.txt` or `.docx`)
 5. Select a tool from the dropdown menu
 6. Click "Setup & Run"
