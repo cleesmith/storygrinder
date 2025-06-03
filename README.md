@@ -21,23 +21,37 @@ StoryGrinder is a desktop application that helps fiction writers analyze and imp
 
 StoryGrinder uses AI to analyze your manuscripts. You'll need at least one API key from these providers:
 
-#### Option 1: Google Gemini (Inexpensive)
-1. Go to [Google AI Studio](https://aistudio.google.com/app/apikey)
-2. Click "Create API Key"
-3. Copy your API key
-4. In StoryGrinder, go to Settings and paste your Gemini API key
+1. Create a file named `.env` in your home directory:
+   - Mac: `~/.env`
+   - Windows: `C:\Users\YourUsername\.env`
 
-#### Option 2: Anthropic Claude
-1. Create an account at [Anthropic Console](https://console.anthropic.com/)
-2. Navigate to API Keys section
-3. Create a new API key
-4. Add it in StoryGrinder's Settings
+2. Open the file with TextEdit (Mac) or Notepad (Windows)
 
-#### Option 3: OpenAI
-1. Sign up at [OpenAI Platform](https://platform.openai.com/)
-2. Go to API Keys in your account
-3. Create a new secret key
-4. Enter it in StoryGrinder's Settings
+3. Add one or more of these lines:
+   ```
+   GEMINI_API_KEY=your_gemini_api_key_here
+   ANTHROPIC_API_KEY=your_anthropic_api_key_here
+   OPENAI_API_KEY=your_openai_api_key_here
+   ```
+
+4. Save the file and start StoryGrinder
+
+#### Getting API Keys:
+
+**Google Gemini (Inexpensive)**
+- Go to [Google AI Studio](https://aistudio.google.com/app/apikey)
+- Click "Create API Key"
+- Copy the key
+
+**Anthropic Claude**
+- Create account at [Anthropic Console](https://console.anthropic.com/)
+- Navigate to API Keys section
+- Create new API key
+
+**OpenAI**
+- Sign up at [OpenAI Platform](https://platform.openai.com/)
+- Go to API Keys in your account
+- Create new secret key
 
 ### Your First Project
 
@@ -112,14 +126,13 @@ Your projects are stored in `~/writing_with_storygrinder/` on your computer. Eac
 
 ## Privacy & Security
 
-- All manuscripts and project files stay on your local computer
-- API keys are stored securely in your system's credential storage
+- API keys are stored in your home directory's .env file
 - You control when AI services are accessed
 - No automatic uploads or background processing
 
 ## Support
 
-Having issues or suggestions? Please visit our [GitHub Issues page](https://github.com/yourusername/storygrinder/issues).
+Having issues or suggestions? Please visit our [GitHub Issues page](https://github.com/cleesmith/storygrinder/issues).
 
 ## About
 
