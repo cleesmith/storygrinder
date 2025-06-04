@@ -1383,8 +1383,7 @@ world_writer: ``, // see tool for prompt
 chapter_writer: ``, // see tool for prompt
 
 // Non-AI tools
-docx_comments: `
-`,
+docx_comments: ``,
 epub_converter: ``
 
 };

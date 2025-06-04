@@ -208,6 +208,15 @@ const TOOL_DEFS = [
       "required": true,
       "default": "manuscript.txt",
       "group": "Input Files"
+    },
+    {
+      "name": "special_instructions",
+      "label": "Special Instructions",
+      "type": "textarea",
+      "description": "Additional focus areas or specific concerns (optional)",
+      "required": false,
+      "placeholder": "e.g., Focus on dialogue consistency, Pay attention to timeline issues...",
+      "group": "Customization"
     }
   ]},
   { id: 'developmental_editing', title: `Developmental Editing`, description: `Performs developmental editing for your manuscript, with all chapter numbers/headers removed.`, Class: DevelopmentalEditing, options: [
