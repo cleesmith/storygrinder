@@ -142,8 +142,9 @@ class ProofreaderSpelling extends ToolBase {
   async analyzeManuscript(content, dictionary) {
     // Extract all words from the manuscript
     const allWords = this.extractWords(content);
-    const uniqueWords = [...new Set(allWords)]; // Remove duplicates for efficiency
-    
+    // Remove duplicates for efficiency
+    const uniqueWords = [...new Set(allWords)]; 
+
     // Initialize result containers
     const results = {
       totalWords: allWords.length,
@@ -156,11 +157,6 @@ class ProofreaderSpelling extends ToolBase {
     // Process each unique word through spell checking
     for (const word of uniqueWords) {
       results.processedWords++;
-      
-      // Show progress for long documents (every 1000 words)
-      if (results.processedWords % 1000 === 0) {
-        this.emitOutput(`Processed ${results.processedWords}/${uniqueWords.length} unique words...\n`);
-      }
       
       // Skip words that match ignore patterns (likely not spelling errors)
       if (this.shouldIgnoreWord(word)) {
@@ -196,9 +192,9 @@ class ProofreaderSpelling extends ToolBase {
    * @returns {string[]} - Array of extracted words
    */
   extractWords(content) {
-    // Use regex to extract words, handling contractions and hyphens appropriately
-    // This pattern captures words while preserving contractions like "don't" and hyphenated words
-    const wordPattern = /\b[a-zA-ZÀ-ÿ]+(?:['\-][a-zA-ZÀ-ÿ]+)*\b/g;
+    // Use regex to extract words, handling contractions and various English text gotchas
+    // Explicitly include Unicode 8217 (right single quote) which is common in documents
+    const wordPattern = /\b[\p{L}]+(?:['`''\u2019][\p{L}]+)*\b/gu;
     const matches = content.match(wordPattern) || [];
     
     return matches
@@ -208,7 +204,11 @@ class ProofreaderSpelling extends ToolBase {
       })
       .map(word => {
         // Clean up words: remove leading/trailing punctuation, normalize case
-        return word.replace(/^[^\w]+|[^\w]+$/g, '').toLowerCase();
+        // Also normalize apostrophes to straight quotes for consistency
+        return word
+          .replace(/^[^\p{L}]+|[^\p{L}]+$/gu, '') // Remove non-letter punctuation from ends
+          .replace(/['`''\u2019]/g, "'") // Normalize all apostrophe types to straight
+          .toLowerCase();
       })
       .filter(word => word.length > 0); // Remove empty strings after cleanup
   }
@@ -219,24 +219,24 @@ class ProofreaderSpelling extends ToolBase {
    * @returns {boolean} - True if word should be ignored
    */
   shouldIgnoreWord(word) {
-    // Check against all ignore patterns
-    for (const pattern of this.IGNORE_PATTERNS) {
-      if (pattern.test(word)) {
-        return true;
-      }
-    }
+    // // Check against all ignore patterns
+    // for (const pattern of this.IGNORE_PATTERNS) {
+    //   if (pattern.test(word)) {
+    //     return true;
+    //   }
+    // }
     
-    // Additional heuristics to reduce false positives
+    // // Additional heuristics to reduce false positives
     
-    // Skip words that start with capital letters (likely proper names)
-    if (/^[A-Z]/.test(word) && word.length > 3) {
-      return true;
-    }
+    // // Skip words that start with capital letters (likely proper names)
+    // if (/^[A-Z]/.test(word) && word.length > 3) {
+    //   return true;
+    // }
     
-    // Skip words with unusual character combinations that might be technical terms
-    if (/[0-9]/.test(word)) { // Contains numbers
-      return true;
-    }
+    // // Skip words with unusual character combinations that might be technical terms
+    // if (/[0-9]/.test(word)) { // Contains numbers
+    //   return true;
+    // }
     
     return false;
   }
@@ -306,7 +306,7 @@ class ProofreaderSpelling extends ToolBase {
 
     // Create a simple word list file for easy reference
     if (results.misspellings.length > 0) {
-      const wordList = results.misspellings.map(item => item.word).join('\n');
+      const wordList = results.misspellings.map(item => item.word).sort().join('\n');
       const wordListPath = await this.writeOutputFile(wordList, saveDir, `${baseFilename}_words_only.txt`);
       savedFiles.push(wordListPath);
     }
