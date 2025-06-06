@@ -9,6 +9,7 @@ cls_how_tos/
 screencaps/
 WritersToolkit.iconset/
 StoryGrinder.iconset/
+*.cer
 
 # 1. Node modules
 node_modules/
