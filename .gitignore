@@ -1,4 +1,8 @@
 # 0. testing
+*.dmg
+*.app
+*.zip
+
 package-lock.json
 count_*
 cls*
