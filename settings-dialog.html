@@ -66,7 +66,7 @@ body.light-mode .settings-title {
 /* Content area fills available space */
 .settings-content {
   flex: 1;
-  overflow-y: visible;
+  overflow-y: auto;
   margin-bottom: 20px;
 }
 
@@ -237,8 +237,12 @@ body.light-mode .cancel-button:hover {
       
       <div class="settings-content">
         <div class="setting-group">
-          <div class="setting-label">Projects Directory &nbsp;&nbsp;&nbsp;<small>(<i>can't be changed</i>)</small></div>
-          <div class="setting-description">Location where all your writing projects and tool prompts are stored:</div>
+          <div class="setting-label">StoryGrinder Locations</div>
+          <div class="setting-description">App installation path:</div>
+          <div class="setting-value" id="app-path">Loading...</div>
+          <div class="setting-description">.env file path:</div>
+          <div class="setting-value" id="env-path">Loading...</div>
+          <div class="setting-description">Writing projects and tool prompts directory:</div>
           <div class="setting-value" id="projects-path">Loading...</div>
         </div>
         

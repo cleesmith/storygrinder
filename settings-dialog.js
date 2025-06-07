@@ -12,6 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const saveBtn = document.getElementById('save-btn');
   const saveQuitBtn = document.getElementById('save-quit-btn');
   const projectsPath = document.getElementById('projects-path');
+  const appPath = document.getElementById('app-path');
+  const envPath = document.getElementById('env-path');
 
   console.log('Found elements:', {
     aiProviderSelect: !!aiProviderSelect,
@@ -20,7 +22,9 @@ document.addEventListener('DOMContentLoaded', function() {
     cancelBtn: !!cancelBtn,
     saveBtn: !!saveBtn,
     saveQuitBtn: !!saveQuitBtn,
-    projectsPath: !!projectsPath
+    projectsPath: !!projectsPath,
+    appPath: !!appPath,
+    envPath: !!envPath
   });
 
   // Track initial values and changes
@@ -44,10 +48,15 @@ document.addEventListener('DOMContentLoaded', function() {
       const settings = await window.electronAPI.getCurrentSettings();
       console.log('Received settings:', settings);
       
-      // Set projects path (read-only display)
+      // Set StoryGrinder locations (read-only display)
+      if (settings.appPath) {
+        appPath.textContent = settings.appPath;
+      }
+      if (settings.envPath) {
+        envPath.textContent = settings.envPath;
+      }
       if (settings.projectsPath) {
         projectsPath.textContent = settings.projectsPath;
-        // projectsPath.textContent = `this is a really long projects directory full path/this is a really long projects directory full path/this is a really long projects directory full path/this is a really long projects directory full path/smuffin`;
       }
       
       // Set AI provider

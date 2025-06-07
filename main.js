@@ -18,6 +18,8 @@ const promptManager = require('./tool-prompts-manager');
 
 const homeDir = os.homedir();
 const envFilePath = path.join(homeDir, '.env');
+// console.log(`envFilePath:`);
+// console.dir(envFilePath);
 
 let mainWindow = null;
 
@@ -320,9 +322,10 @@ async function initializeApp() {
                           }
                           
                           await fs.promises.writeFile(envFilePath, newEnvContent, 'utf8');
-                          // console.log(`Guidance comment added/updated in .env file: ${envFilePath}`);
 
                           const openError = await shell.openPath(envFilePath);
+                          console.log(`\n .env file: ${envFilePath}\n openError=${openError}\n`);
+                          console.dir(openError);
                           if (openError) {
                               console.error(`Error opening .env file with shell.openPath: ${openError}`);
                               dialog.showErrorBox('File Access Error', `Could not automatically open the .env file at:\n${envFilePath}\n\nPlease open it manually. StoryGrinder will now quit.`);
@@ -613,7 +616,7 @@ function createSettingsDialog() {
   // console.log('Creating settings dialog...');
   
   const windowWidth = 530;
-  const windowHeight = 690;
+  const windowHeight = 750;
   
   const display = screen.getPrimaryDisplay();
   const { x: workX, y: workY, width: workWidth, height: workHeight } = display.workArea;
@@ -636,7 +639,9 @@ function createSettingsDialog() {
     },
     backgroundColor: '#121212',
     autoHideMenuBar: true,
-    resizable: false
+    resizable: true,
+    minWidth: 530,
+    minHeight: 750
   });
 
   settingsWindow.loadFile(path.join(__dirname, 'settings-dialog.html'));
@@ -1407,11 +1412,17 @@ function setupIPCHandlers() {
   // Get current settings
   ipcMain.handle('get-current-settings', async () => {
     try {
-      return appState.getCurrentSettings();
+      const settings = appState.getCurrentSettings();
+      // Add app and env paths that the settings dialog expects
+      settings.appPath = app.getAppPath();
+      settings.envPath = envFilePath;
+      return settings;
     } catch (error) {
       console.error('Error getting current settings:', error);
       return {
         projectsPath: appState.PROJECTS_DIR,
+        appPath: app.getAppPath(),
+        envPath: envFilePath,
         aiProvider: null,
         language: 'en-US'
       };
