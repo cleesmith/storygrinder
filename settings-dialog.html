@@ -50,12 +50,18 @@ body.light-mode .settings-dialog {
   border: none;
 }
 
+.settings-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-shrink: 0;
+}
+
 .settings-title {
   font-size: 22px;
   font-weight: 500;
-  margin-bottom: 30px;
-  text-align: center;
-  flex-shrink: 0;
+  margin: 0;
   color: #fff;
 }
 
@@ -71,24 +77,29 @@ body.light-mode .settings-title {
 }
 
 .setting-group {
-  margin-bottom: 3px;
-  padding: 15px;
+  margin-bottom: 2px;
+  padding: 10px;
   background-color: #2a2a2a;
   border: none;
 }
 
 .setting-group:first-child {
-  padding: 15px;
-  margin-bottom: 3px;
+  padding: 10px;
+  margin-bottom: 2px;
+  background-color: #1a1a1a;
 }
 
 .setting-group:last-child {
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
 
 body.light-mode .setting-group {
   background-color: #ffffff;
   border: none;
+}
+
+body.light-mode .setting-group:first-child {
+  background-color: #f5f5f5;
 }
 
 .setting-label {
@@ -105,11 +116,11 @@ body.light-mode .setting-label {
 .setting-description {
   font-size: 12px;
   color: #aaa;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .setting-group:first-child .setting-description {
-  margin-bottom: 8px;
+  margin-bottom: 2px;
 }
 
 body.light-mode .setting-description {
@@ -123,7 +134,7 @@ body.light-mode .setting-description {
   padding: 8px 0;
   border: none;
   font-family: monospace;
-  font-weight: 500;
+  font-weight: bold;
   word-wrap: break-word;
   word-break: break-all;
   white-space: pre-wrap;
@@ -157,14 +168,9 @@ body.light-mode .settings-select {
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  padding-top: 20px;
   flex-shrink: 0;
-  background-color: #1e1e1e;
 }
 
-body.light-mode .settings-actions {
-  background-color: #ffffff;
-}
 
 .cancel-button {
   background-color: transparent;
@@ -233,17 +239,27 @@ body.light-mode .cancel-button:hover {
 <body class="dark-mode">
   <div class="settings-overlay">
     <div class="settings-dialog">
-      <h1 class="settings-title">Settings</h1>
+      <div class="settings-header">
+        <h1 class="settings-title">Settings</h1>
+        <div class="settings-actions">
+          <button id="cancel-btn" class="cancel-button">Cancel</button>
+          <div style="display: flex; gap: 12px;">
+            <button id="save-btn" class="save-button">Save</button>
+            <button id="save-quit-btn" class="save-quit-button" style="display: none;">Save & Quit</button>
+          </div>
+        </div>
+      </div>
       
       <div class="settings-content">
         <div class="setting-group">
-          <div class="setting-label">StoryGrinder Locations</div>
-          <div class="setting-description">App installation path:</div>
+          <div class="setting-label">StoryGrinder Locations &nbsp;&nbsp;<b>(<i>these may not be changed</i>)</b></div>
+          <div class="setting-description">1) This app is installed here:</div>
           <div class="setting-value" id="app-path">Loading...</div>
-          <div class="setting-description">.env file path:</div>
+          <div class="setting-description"><hr><br>2) Your AI API keys are in the hidden file <b>.env</b> here:</div>
           <div class="setting-value" id="env-path">Loading...</div>
-          <div class="setting-description">Writing projects and tool prompts directory:</div>
+          <div class="setting-description"><hr><br>3) Your writing Projects and Tool prompts are here:</div>
           <div class="setting-value" id="projects-path">Loading...</div>
+          <hr>
         </div>
         
         <div class="setting-group">
@@ -280,14 +296,6 @@ body.light-mode .cancel-button:hover {
               <option value='{"code":"nl-NL","name":"Dutch","nativeName":"Nederlands"}'>Nederlands</option>
             </select>
           </div>
-        </div>
-      </div>
-      
-      <div class="settings-actions">
-        <button id="cancel-btn" class="cancel-button">Cancel</button>
-        <div style="display: flex; gap: 12px;">
-          <button id="save-btn" class="save-button">Save</button>
-          <button id="save-quit-btn" class="save-quit-button" style="display: none;">Save & Quit</button>
         </div>
       </div>
     </div>
